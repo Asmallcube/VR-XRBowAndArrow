@@ -3,44 +3,33 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class Quiver : XRSocketInteractor
 {
-    public GameObject arrowPrefab = null;
-    private Vector3 attachOffSet = Vector3.zero;
     protected override void Awake()
     {
         base.Awake();
-        CreateAndSelectArrow();
-        SetAttachOffset();
     }
 
     protected override void OnSelectExit(XRBaseInteractable interactable)
     {
         base.OnSelectExit(interactable);
-        CreateAndSelectArrow();
     }
 
     private void CreateAndSelectArrow()
     {
-        Arrow arrow = CreateArrow();
-        SelectArrow(arrow);
+
     }
 
     private Arrow CreateArrow()
     {
-        GameObject arrowObject = Instantiate(arrowPrefab, transform.position - attachOffSet, transform.rotation);
-        return arrowObject.GetComponent<Arrow>();
+        return null;
     }
 
     private void SelectArrow(Arrow arrow)
     {
-        OnSelectEnter(arrow);
-        arrow.OnSelectEnter(this);
+
     }
 
     private void SetAttachOffset()
     {
-        if (selectTarget is XRGrabInteractable interactable)
-        {
-            attachOffSet = interactable.attachTransform.localPosition;
-        }
+
     }
 }
